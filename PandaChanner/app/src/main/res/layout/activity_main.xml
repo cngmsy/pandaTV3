@@ -66,7 +66,6 @@
             android:layout_width="0dp"
             android:layout_height="55dp"
             android:button="@null"
-            android:drawablePadding="5dp"
             android:drawableTop="@drawable/tab_home_normal"
             android:gravity="center"
             android:checked="true"
@@ -83,7 +82,6 @@
             android:drawableTop="@drawable/tab_panda_live_normal"
             android:text="熊猫直播"
             android:background="@drawable/main"
-            android:drawablePadding="5dp"
             android:textSize="12sp"/>
         <RadioButton
             android:id="@+id/homeRollVideo"
@@ -95,7 +93,6 @@
             android:gravity="center"
             android:drawableTop="@drawable/tab_panda_culture_normals"
             android:text="熊猫文化"
-            android:drawablePadding="5dp"
             android:textSize="12sp"/>
         <RadioButton
             android:id="@+id/homePandaBroadcast"
@@ -107,7 +104,6 @@
             android:gravity="center"
             android:drawableTop="@drawable/tab_panda_eye_normal"
             android:text="熊猫观察"
-            android:drawablePadding="5dp"
             android:textSize="12sp"/>
 
         <RadioButton
@@ -120,7 +116,6 @@
             android:gravity="center"
             android:background="@drawable/main"
             android:text="直播中国"
-            android:drawablePadding="5dp"
             android:textSize="12sp"
             />
     </RadioGroup>
