@@ -19,6 +19,7 @@ import com.jiyun.qcloud.dashixummoban.manager.FragmentMager;
 import com.jiyun.qcloud.dashixummoban.ui.Broadcast.Broadcast;
 import com.jiyun.qcloud.dashixummoban.ui.China.China;
 import com.jiyun.qcloud.dashixummoban.ui.Gun.Gun;
+import com.jiyun.qcloud.dashixummoban.ui.Gun.ivewgun.GunPresenter;
 import com.jiyun.qcloud.dashixummoban.ui.home.HomePageFragment;
 import com.jiyun.qcloud.dashixummoban.ui.home.HomePresenter;
 import com.jiyun.qcloud.dashixummoban.ui.live.LivePageFragment;
@@ -98,7 +99,8 @@ public class MainActivity extends BaseActivity   {
                 iconImg.setVisibility(View.GONE);
                 titleTv.setVisibility(View.VISIBLE);
                 titleTv.setText("滚滚视频");
-                FragmentMager.getInstance().start(R.id.container, Gun.class,false).build();
+                Gun gun = (Gun) FragmentMager.getInstance().start(R.id.container, Gun.class, false).build();
+                new GunPresenter(gun);
                 break;
             case R.id.homePandaBroadcast:
                 hudongImg.setVisibility(View.GONE);

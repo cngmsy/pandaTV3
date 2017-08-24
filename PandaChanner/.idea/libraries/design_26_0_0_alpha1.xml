@@ -1,12 +1,15 @@
 <component name="libraryTable">
   <library name="design-26.0.0-alpha1">
+    <ANNOTATIONS>
+      <root url="jar://$USER_HOME$/.android/build-cache/5d48fbad03c6ea5647531023774bfed098b9da92/output/annotations.zip!/" />
+    </ANNOTATIONS>
     <CLASSES>
-      <root url="jar://$USER_HOME$/.android/build-cache/9ee6c375901d3866e25fd2507bca68c47c70e1ed/output/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.android/build-cache/9ee6c375901d3866e25fd2507bca68c47c70e1ed/output/res" />
+      <root url="file://$USER_HOME$/.android/build-cache/5d48fbad03c6ea5647531023774bfed098b9da92/output/res" />
+      <root url="jar://$USER_HOME$/.android/build-cache/5d48fbad03c6ea5647531023774bfed098b9da92/output/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://D:/AndroidStudio/android-sdk-windows/extras/android/m2repository/com/android/support/design/26.0.0-alpha1/design-26.0.0-alpha1-sources.jar!/" />
+      <root url="jar://D:/Users/android-sdk-windows/extras/android/m2repository/com/android/support/design/26.0.0-alpha1/design-26.0.0-alpha1-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

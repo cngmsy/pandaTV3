@@ -21,4 +21,6 @@ public class Urls {
     public static final String IMGCODE = "http://reg.cntv.cn/simple/verificationCode.action";
     //邮箱注册
     public static final String EMAILREGISTER = "https://reg.cntv.cn/api/register.action";
+//  滚滚视频  http://www.ipanda.com/kehuduan/video/index.json
+    public static final String GUNHOME = "http://www.ipanda.com/kehuduan/video/index.json";
 }
