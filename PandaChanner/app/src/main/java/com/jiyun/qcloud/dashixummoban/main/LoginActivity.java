@@ -24,6 +24,7 @@ public class LoginActivity extends BaseActivity {
             super.handleMessage(msg);
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(intent);
+            finish();
         }
     };
     @BindView(R.id.wide)
@@ -36,6 +37,10 @@ public class LoginActivity extends BaseActivity {
     @Override
     protected void initData() {
 
+
+    }
+    @Override
+    protected void initView() {
         SharedPreferences preferences = getSharedPreferences("nam", MODE_PRIVATE);
         final SharedPreferences.Editor edit = preferences.edit();
         boolean wed = preferences.getBoolean("wed", false);
@@ -53,15 +58,12 @@ public class LoginActivity extends BaseActivity {
                 public void onClick(View view) {
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(intent);
+                    finish();
                     edit.putBoolean("wed", true);
                     edit.commit();
                 }
             });
         }
-    }
-    @Override
-    protected void initView() {
-
     }
 
     @Override

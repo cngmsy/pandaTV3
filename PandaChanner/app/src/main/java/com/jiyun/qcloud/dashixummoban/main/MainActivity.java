@@ -164,7 +164,7 @@ public class MainActivity extends BaseActivity   {
                 "China".equals(name)
                 ){
             if (keyCode == KeyEvent.KEYCODE_BACK) {//back键被按下了
-                if ((System.currentTimeMillis() - mExitTime) >2000) {//第二次点击判断是否在两秒内完成，是的话Finish掉（退出）
+                if ((System.currentTimeMillis() - mExitTime) > 2000) {//第二次点击判断是否在两秒内完成，是的话Finish掉（退出）
                     Toast.makeText(this, "再按一次退出程序", Toast.LENGTH_SHORT).show();
                     mExitTime = System.currentTimeMillis();
                 } else {
