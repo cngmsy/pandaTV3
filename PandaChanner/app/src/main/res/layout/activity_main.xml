@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
     android:orientation="vertical">
 
-    <RelativeLayout
+    <com.zhy.autolayout.AutoRelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="120px"
         android:background="@color/colorPrimary">
 
         <ImageView
@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:src="@drawable/panda_sign"
             android:layout_alignParentBottom="true"
-            android:layout_marginLeft="10dp"/>
+            android:layout_marginLeft="20px"/>
         <ImageView
             android:id="@+id/personImg"
             android:layout_width="wrap_content"
@@ -25,7 +25,7 @@
             android:src="@drawable/person_sign"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="10dp"/>
+            android:layout_marginRight="20px"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -41,32 +41,34 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/hudong_sign"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="20px"
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@id/personImg"/>
 
-    </RelativeLayout>
+    </com.zhy.autolayout.AutoRelativeLayout>
 
-    <FrameLayout
+    <com.zhy.autolayout.AutoFrameLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="0px"
         android:id="@+id/container"
 
-        android:layout_weight="1"></FrameLayout>
+        android:layout_weight="1"></com.zhy.autolayout.AutoFrameLayout>
 
     <RadioGroup
         android:id="@+id/homeBottomGroup"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         >
         <RadioButton
             android:id="@+id/homePage"
             android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="55dp"
+            android:layout_width="0px"
+            android:layout_height="match_parent"
             android:button="@null"
             android:drawableTop="@drawable/tab_home_normal"
+            android:paddingTop="10px"
+            android:paddingBottom="10px"
             android:gravity="center"
             android:checked="true"
             android:background="@drawable/main"
@@ -75,8 +77,10 @@
         <RadioButton
             android:id="@+id/homePandaLive"
             android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="55dp"
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:paddingTop="10px"
+            android:paddingBottom="10px"
             android:button="@null"
             android:gravity="center"
             android:drawableTop="@drawable/tab_panda_live_normal"
@@ -86,8 +90,10 @@
         <RadioButton
             android:id="@+id/homeRollVideo"
             android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="55dp"
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:paddingTop="10px"
+            android:paddingBottom="10px"
             android:button="@null"
             android:background="@drawable/main"
             android:gravity="center"
@@ -97,9 +103,11 @@
         <RadioButton
             android:id="@+id/homePandaBroadcast"
             android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_height="55dp"
+            android:layout_width="0px"
+            android:layout_height="match_parent"
             android:button="@null"
+            android:paddingTop="10px"
+            android:paddingBottom="10px"
             android:background="@drawable/main"
             android:gravity="center"
             android:drawableTop="@drawable/tab_panda_eye_normal"
@@ -108,11 +116,13 @@
 
         <RadioButton
             android:id="@+id/homeLiveChina"
-            android:layout_width="0dp"
-            android:layout_height="55dp"
+            android:layout_width="0px"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:drawableTop="@drawable/tab_live_china_normal"
             android:button="@null"
+            android:paddingTop="10px"
+            android:paddingBottom="10px"
             android:gravity="center"
             android:background="@drawable/main"
             android:text="直播中国"
@@ -120,4 +130,4 @@
             />
     </RadioGroup>
 
-</LinearLayout>
+</com.zhy.autolayout.AutoLinearLayout>

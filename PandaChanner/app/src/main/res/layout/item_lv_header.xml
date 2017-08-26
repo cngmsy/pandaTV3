@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dip"
+        android:scaleType="fitXY"
+        android:id="@+id/img_head_gun_photo" />
+    <TextView
+        android:id="@+id/tv_head_gun_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dip"
+        android:textColor="@color/bai"
+        android:layout_alignBottom="@id/img_head_gun_photo"/>
+</com.zhy.autolayout.AutoRelativeLayout>
