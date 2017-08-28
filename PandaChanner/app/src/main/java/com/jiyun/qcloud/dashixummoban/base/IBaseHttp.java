@@ -17,8 +17,8 @@ public interface IBaseHttp {
 
     <T> void get(String url, Map<String, String> params, NetWorkCallBack<T> callback);
     <T> void get(String url, Map<String, String> params, Map<String, String> headers, NetWorkCallBack<T> callback);
-    <T> void post(String url, Map<String, String> params,NetWorkCallBack<T> callback);
-    void upload(String url, Map<String,String> map, File file, NetWorkCallBack  callback);
+    <T> void post(String url, Map<String, String> params, NetWorkCallBack<T> callback);
+    void upload(String url, Map<String, String> map, File file, NetWorkCallBack callback);
     void download();
     void loadImage(String url, ImageView imageView);
 

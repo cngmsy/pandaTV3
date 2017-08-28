@@ -4,7 +4,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
 import com.jiyun.qcloud.dashixummoban.R;
 import com.jude.rollviewpager.adapter.StaticPagerAdapter;
 
@@ -13,7 +12,7 @@ import com.jude.rollviewpager.adapter.StaticPagerAdapter;
  */
 
 public class WideAdapter extends StaticPagerAdapter {
-    int age[]={R.drawable.a,R.drawable.b,R.drawable.c};
+    int age[]={R.drawable.a, R.drawable.b, R.drawable.c};
     @Override
     public View getView(ViewGroup container, int position) {
         ImageView view = new ImageView(container.getContext());

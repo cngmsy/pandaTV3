@@ -11,6 +11,6 @@ import com.jiyun.qcloud.dashixummoban.modle.net.callback.NetWorkCallBack;
  * 团队 1人
  */
 
-public interface GunModule extends BaseModel{
+public interface GunModule extends BaseModel {
     void loadGunList(NetWorkCallBack<GunData> gunDataNetWorkCallBack);
 }

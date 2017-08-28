@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="1dp"
+    android:background="#fff">
+    <com.zhy.autolayout.AutoFrameLayout
+        android:layout_marginTop="15px"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15px"
+        >
+        <ImageView
+            android:id="@+id/gritlist_img"
+            android:layout_width="wrap_content"
+            android:layout_height="200px"
+            android:layout_marginLeft="10px"
+            android:layout_marginRight="10px"
+            android:layout_gravity="center"
+            android:background="#fff"
+            />
+        <com.zhy.autolayout.AutoFrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="160px">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="50px"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="10px"
+                android:src="@drawable/lpanda_bottom_gra" />
+            <com.zhy.autolayout.AutoRelativeLayout
+                android:layout_width="68dp"
+                android:layout_height="match_parent"
+                >
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_play_arrow_white_24dp"
+                    android:id="@+id/list_image"
+                    android:layout_centerVertical="true"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="00:00"
+                    android:textColor="#fff"
+                    android:id="@+id/list_shij"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/list_image"
+                    />
+
+            </com.zhy.autolayout.AutoRelativeLayout>
+
+        </com.zhy.autolayout.AutoFrameLayout>
+
+    </com.zhy.autolayout.AutoFrameLayout>
+    <com.zhy.autolayout.AutoLinearLayout
+        android:layout_marginBottom="15px"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginLeft="30px">
+        <TextView
+            android:id="@+id/list_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40px"
+            android:layout_marginRight="20px"
+            android:textColor="#000"
+            android:textSize="30px"
+            />
+        <com.zhy.autolayout.AutoLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/list_ri"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                />
+        </com.zhy.autolayout.AutoLinearLayout>
+
+    </com.zhy.autolayout.AutoLinearLayout>
+
+</com.zhy.autolayout.AutoLinearLayout>

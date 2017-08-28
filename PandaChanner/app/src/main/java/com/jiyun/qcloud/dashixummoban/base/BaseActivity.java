@@ -54,7 +54,6 @@ public abstract class BaseActivity  extends AppCompatActivity{
     @Override
     protected void onResume() {
         super.onResume();
-         initData();
         //// TODO: 2017/8/20  在这里添加需要重复执行的内容
         App.mBaseActivity=this;
     }

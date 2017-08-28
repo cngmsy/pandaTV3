@@ -71,10 +71,4 @@ public abstract class BaseFragment extends Fragment {
      * @param bundle
      */
     public abstract void setBundle(Bundle bundle);
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        initData();
-    }
 }

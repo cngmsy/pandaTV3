@@ -3,7 +3,7 @@
     package="com.jiyun.qcloud.dashixummoban">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <application
         android:name=".app.App"
         android:allowBackup="true"
@@ -19,7 +19,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity android:name=".main.IjkFullscreenActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            ></activity>
         <meta-data
             android:name="design_width"
             android:value="720" />

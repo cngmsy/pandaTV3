@@ -1,6 +1,9 @@
 package com.jiyun.qcloud.dashixummoban.modle.dataModel;
 
 
+import com.jiyun.qcloud.dashixummoban.entity.Home2;
+import com.jiyun.qcloud.dashixummoban.entity.Home3;
+import com.jiyun.qcloud.dashixummoban.entity.Mp4;
 import com.jiyun.qcloud.dashixummoban.entity.PandaHome;
 import com.jiyun.qcloud.dashixummoban.modle.net.callback.NetWorkCallBack;
 
@@ -9,6 +12,8 @@ import com.jiyun.qcloud.dashixummoban.modle.net.callback.NetWorkCallBack;
  */
 
 public interface IPandaHomeModel extends BaseModel {
-
     void loadHomeList(NetWorkCallBack<PandaHome> callback);
+    void HomeUri(NetWorkCallBack<Home2> callback, String uri);
+    void Home3Uri(NetWorkCallBack<Home3> callback, String uri);
+    void Mp4Uri(NetWorkCallBack<Mp4> callback, String uri);
 }
