@@ -23,4 +23,7 @@ public class Urls {
     public static final String EMAILREGISTER = "https://reg.cntv.cn/api/register.action";
 //  滚滚视频  http://www.ipanda.com/kehuduan/video/index.json
     public static final String GUNHOME = "http://www.ipanda.com/kehuduan/video/index.json";
+    //直播中国
+    public static final String LIVECHINA = "http://www.ipanda.com/kehuduan/PAGE14501775094142282/index.json";
+    public static final String BADALING = "http://www.ipanda.com/kehuduan/liebiao/badaling/index.json";
 }
