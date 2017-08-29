@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <com.zhy.autolayout.AutoLinearLayout
+        android:background="#fff"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <EditText
+            android:hint="添加评论..."
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/bianlive_ed"
+            android:id="@+id/biankan_ed" />
+        <Button
+            android:layout_weight="1"
+            android:id="@+id/biankan_button"
+            android:textColor="@color/baise"
+            android:text="发送"
+            android:layout_margin="10dp"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:background="@color/colorPrimary"
+            android:layout_alignParentRight="true" />
+
+    </com.zhy.autolayout.AutoLinearLayout>
+    <com.jcodecraeer.xrecyclerview.XRecyclerView
+        android:id="@+id/biankan_xrecyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </com.jcodecraeer.xrecyclerview.XRecyclerView>
+
+
+</com.zhy.autolayout.AutoLinearLayout>

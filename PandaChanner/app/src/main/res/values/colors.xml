@@ -6,4 +6,16 @@
     <color name="bai">#fff</color>
     <color name="hiu">#dcdbdb</color>
     <color name="black">#000</color>
+    <color name="Black">#000000</color>
+    <color name="biz_audio_progress_bg">#00b2ff</color>
+    <color name="biz_audio_progress_first">#ffffff</color>
+    <color name="biz_audio_progress_second">#6b6666</color>
+    <color name="default_bg">#aa000000</color>
+    <color name="select_color">#00b2ff</color>
+    <color name="normal_color">#ffffffff</color>
+    <color name="divider_color">#55504a</color>
+    <!--special color-->
+    <color name="black_a10_color">#1a000000</color>
+    <color name="huise">#d1d0d0</color>
+    <color name="baise">#fff</color>
 </resources>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/interaction"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5px"
+    android:background="#fff"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/intercation_title"
+        android:layout_width="match_parent"
+        android:layout_height="50px"
+        android:layout_gravity="center"
+        android:layout_margin="10px"
+        android:text="二十四节气"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="16sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5px"
+        android:background="#000" />
+
+    <ImageView
+        android:id="@+id/interaction_img"
+        android:layout_width="match_parent"
+        android:layout_height="400px"
+        android:layout_margin="5px" />
+</com.zhy.autolayout.AutoLinearLayout>

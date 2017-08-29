@@ -1,5 +1,6 @@
 package com.jiyun.qcloud.dashixummoban.main;
 
+import android.content.Intent;
 import android.support.v4.app.FragmentManager;
 import android.view.KeyEvent;
 import android.view.View;
@@ -174,6 +175,12 @@ public class MainActivity extends BaseActivity {
             }
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    @OnClick(R.id.hudongImg)
+    public void onViewClicked() {
+        Intent intent = new Intent(MainActivity.this, InteractionActivity.class);
+        startActivity(intent);
     }
 }
 
