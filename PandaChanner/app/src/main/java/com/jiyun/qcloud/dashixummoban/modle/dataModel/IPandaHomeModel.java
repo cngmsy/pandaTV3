@@ -20,7 +20,6 @@ public interface IPandaHomeModel extends BaseModel {
     void loadHomeList(NetWorkCallBack<PandaHome> callback);
     void loadChinaList(NetWorkCallBack<ChinaBean> callback);
     void loadBaList(String url,NetWorkCallBack<BadaBean> callBack);
-
     void HomeUri(NetWorkCallBack<Home2> callback, String uri);
     void Home3Uri(NetWorkCallBack<Home3> callback, String uri);
     void Mp4Uri(NetWorkCallBack<Mp4> callback, String uri);
