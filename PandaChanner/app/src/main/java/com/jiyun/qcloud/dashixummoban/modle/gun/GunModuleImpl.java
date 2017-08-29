@@ -11,7 +11,7 @@ import com.jiyun.qcloud.dashixummoban.modle.net.callback.NetWorkCallBack;
  * 团队 1人
  */
 
-public class GunModuleImpl implements GunModule{
+public class GunModuleImpl implements GunModule {
     @Override
     public void loadGunList(NetWorkCallBack<GunData> gunDataNetWorkCallBack) {
         iHttp.get(Urls.GUNHOME,null,gunDataNetWorkCallBack);

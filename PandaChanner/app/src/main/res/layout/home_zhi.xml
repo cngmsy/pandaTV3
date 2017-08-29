@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhy.autolayout.AutoLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="15px"
+    android:background="#fff">
+        <TextView
+            android:id="@+id/zhi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="直播秀场"
+            android:layout_marginTop="25px"
+            android:layout_marginLeft="20px"
+            android:textColor="#4f9be7"
+            android:textSize="40px"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="25px"
+            android:background="#f6f6f6"/>
+        <com.jiyun.qcloud.dashixummoban.widget.MyGridView
+            android:id="@+id/zhi_grid"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:numColumns="3"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="2dp"
+            android:background="#f6f6f6"
+            ></com.jiyun.qcloud.dashixummoban.widget.MyGridView>
+</com.zhy.autolayout.AutoLinearLayout>

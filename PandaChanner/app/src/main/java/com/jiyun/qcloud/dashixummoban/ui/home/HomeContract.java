@@ -10,7 +10,6 @@ import com.jiyun.qcloud.dashixummoban.entity.PandaHome;
  */
 
 public class HomeContract {
-
     interface View extends IBaseView<Presenter> {
         void showHomeListData(PandaHome pandaHome);
         void playVideo();

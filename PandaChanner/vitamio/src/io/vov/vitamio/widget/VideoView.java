@@ -769,4 +769,18 @@ public class VideoView extends SurfaceView implements MediaController.MediaPlaye
   protected boolean isInPlaybackState() {
     return (mMediaPlayer != null && mCurrentState != STATE_ERROR && mCurrentState != STATE_IDLE && mCurrentState != STATE_PREPARING);
   }
+
+    public void stop() {
+        if (mMediaPlayer != null) {
+            if (isInPlaybackState()) {
+                if (mMediaPlayer.isPlaying() || mMediaPlayer.getCurrentPosition()>0) {
+                    mMediaPlayer.stop();
+                    mCurrentState = STATE_IDLE;
+                }
+            }
+            mMediaPlayer.reset();
+            mTargetState = STATE_IDLE;
+        }
+    }
+
 }

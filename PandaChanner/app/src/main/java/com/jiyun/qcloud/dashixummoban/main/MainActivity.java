@@ -1,5 +1,6 @@
 package com.jiyun.qcloud.dashixummoban.main;
 
+import android.content.Intent;
 import android.support.v4.app.FragmentManager;
 import android.view.KeyEvent;
 import android.view.View;
@@ -20,8 +21,8 @@ import com.jiyun.qcloud.dashixummoban.ui.Broadcast.Broadcast;
 import com.jiyun.qcloud.dashixummoban.ui.China.China;
 import com.jiyun.qcloud.dashixummoban.ui.Gun.Gun;
 import com.jiyun.qcloud.dashixummoban.ui.Gun.ivewgun.GunPresenter;
+import com.jiyun.qcloud.dashixummoban.ui.home.Home2Ptresenter;
 import com.jiyun.qcloud.dashixummoban.ui.home.HomePageFragment;
-import com.jiyun.qcloud.dashixummoban.ui.home.HomePresenter;
 import com.jiyun.qcloud.dashixummoban.ui.live.LivePageFragment;
 
 import butterknife.BindView;
@@ -31,7 +32,7 @@ import butterknife.OnClick;
  * Created by chj on 2017/8/20.
  */
 
-public class MainActivity extends BaseActivity   {
+public class MainActivity extends BaseActivity {
 
 
     @BindView(R.id.iconImg)
@@ -61,10 +62,10 @@ public class MainActivity extends BaseActivity   {
 
     @Override
     protected void initData() {
-        fragmentManager =App.mBaseActivity.getSupportFragmentManager();
+        fragmentManager = App.mBaseActivity.getSupportFragmentManager();
         HomePageFragment homeFragment= (HomePageFragment) FragmentMager.getInstance().start(R.id.container, HomePageFragment.class,false).build();
         //presenter在这里初始化
-        new HomePresenter(homeFragment);
+        new Home2Ptresenter(homeFragment,homeFragment,homeFragment);
     }
 
     @Override
@@ -168,12 +169,18 @@ public class MainActivity extends BaseActivity   {
                     Toast.makeText(this, "再按一次退出程序", Toast.LENGTH_SHORT).show();
                     mExitTime = System.currentTimeMillis();
                 } else {
-                    ActivityCollector.getInstance().exit(App.mBaseActivity);
+                    ActivityCollector.getInstance().exit(this);
                 }
                 return true;
             }
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    @OnClick(R.id.hudongImg)
+    public void onViewClicked() {
+        Intent intent = new Intent(MainActivity.this, InteractionActivity.class);
+        startActivity(intent);
     }
 }
 
