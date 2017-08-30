@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -17,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.dl7.player.media.IjkPlayerView;
 import com.jiyun.qcloud.dashixummoban.R;
 import com.jiyun.qcloud.dashixummoban.base.BaseFragment;
 import com.jiyun.qcloud.dashixummoban.entity.Live.LiveBeans;
@@ -27,7 +27,6 @@ import com.jiyun.qcloud.dashixummoban.ui.live.live_fragment.LookFragment;
 import com.jiyun.qcloud.dashixummoban.ui.live.live_fragment.MoreFragment;
 import com.jiyun.qcloud.dashixummoban.ui.live.network.LiveContract;
 import com.jiyun.qcloud.dashixummoban.ui.live.network.LivePresenter;
-import com.jiyun.qcloud.dashixummoban.ui.live.view.MyMediaController;
 import com.jiyun.qcloud.dashixummoban.ui.live.view.NoScrollViewPager;
 import com.zhy.autolayout.AutoRelativeLayout;
 
@@ -38,16 +37,14 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
-import io.vov.vitamio.MediaPlayer;
 import io.vov.vitamio.widget.MediaController;
-import io.vov.vitamio.widget.VideoView;
 
 /**
  * Created by lenovo on 2017/8/23.
  */
 
 //  pla_pause.png
-public class LiveFragment extends BaseFragment implements LiveContract.View {
+public class LiveFragment extends BaseFragment implements LiveContract.View{
     @BindView(R.id.icon_layout)
     AutoRelativeLayout iconLayout;
     @BindView(R.id.live_down)
@@ -62,7 +59,7 @@ public class LiveFragment extends BaseFragment implements LiveContract.View {
     @BindView(R.id.live_title)
     TextView liveTitle;
     @BindView(R.id.vitamio)
-    VideoView vitamio;
+    public IjkPlayerView vitamio;
     @BindView(R.id.icon)
     ImageView icon;
     private List<Fragment> list;
@@ -79,6 +76,8 @@ public class LiveFragment extends BaseFragment implements LiveContract.View {
             liveTitle.setText("【正在直播】" + listBean.getTitle());
         }
     };
+    private String flv2=null;
+    private boolean playing=false;
 
     @Override
     protected int getLayoutRes() {
@@ -87,10 +86,37 @@ public class LiveFragment extends BaseFragment implements LiveContract.View {
 
     @Override
     protected void initData() {
-        presenter = new LivePresenter(this);
-        presenter.start();
+        IntentFilter filter=new IntentFilter();
+        filter.addAction("axcv");
+getActivity().registerReceiver(new BroadcastReceiver() {
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        show();
+    }
+},filter);
     }
 
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+
+        if (isVisibleToUser){
+            presenter = new LivePresenter(this);
+            presenter.start();
+        }else {
+            if (vitamio!=null){
+                if (flv2 != null || vitamio.isPlaying()) {
+                    flv2 = null;
+                    vitamio.onPause();
+                }
+                if (flv2 != null || vitamio.isPlaying()) {
+                    flv2 = null;
+                    vitamio.onDestroy();
+                }
+            }
+
+        }
+    }
 
     @Override
     protected void initView(View view) {
@@ -165,15 +191,41 @@ public class LiveFragment extends BaseFragment implements LiveContract.View {
     public void showVedioList(LivevedioBeans livevedioBeans) {
         vitamio.setVisibility(View.VISIBLE);
         icon.setVisibility(View.GONE);
-        String flv2 = livevedioBeans.getFlv_url().getFlv2();
-        vitamio.setVideoURI(Uri.parse(flv2));
-        mMediaController = new MyMediaController(getContext(), vitamio, getActivity());
-        mMediaController.show(5000);//控制器显示5s后自动隐藏
-        vitamio.setMediaController(mMediaController);//绑定控制器
-        vitamio.setVideoQuality(MediaPlayer.VIDEOQUALITY_HIGH);//设置播放画质 高画质
-        vitamio.requestFocus();//取得焦点
+        flv2 = livevedioBeans.getFlv_url().getFlv2();
+        boolean playing = vitamio.isPlaying();
+        if (playing){
+            vitamio. reset();
+        }
+       if (flv2 !=null){
+           vitamio. reset();
+           vitamio.init().setVideoPath(flv2).start();
+       }
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (flv2 !=null&&vitamio.isPlaying()){
+            vitamio.onResume();
+        }
     }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (flv2 !=null&&vitamio.isPlaying()){
+            vitamio.onPause();
+        }
+
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (flv2 !=null&&vitamio.isPlaying()){
+            vitamio.onDestroy();
+        }
+
+    }
     @OnClick({R.id.live_down})
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -188,6 +240,18 @@ public class LiveFragment extends BaseFragment implements LiveContract.View {
                     curr = 1;
                 }
                 break;
+        }
+    }
+    public void show() {
+        if (vitamio!=null){
+            if (flv2 != null || vitamio.isPlaying()) {
+                flv2 = null;
+                vitamio.onPause();
+            }
+            if (flv2 != null || vitamio.isPlaying()) {
+                flv2 = null;
+                vitamio.onDestroy();
+            }
         }
     }
 }

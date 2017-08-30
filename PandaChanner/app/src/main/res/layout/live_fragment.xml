@@ -16,19 +16,22 @@
             android:layout_height="wrap_content"
             android:minHeight="350px"
             android:visibility="visible">
-
-            <io.vov.vitamio.widget.VideoView
-                android:id="@+id/vitamio"
-                android:layout_width="match_parent"
-                android:layout_height="350px"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true" />
-
-            <ImageView
-                android:id="@+id/icon"
-                android:layout_width="fill_parent"
-                android:layout_height="350px"
-                android:src="@drawable/_no_img"/>
+<com.zhy.autolayout.AutoFrameLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <com.dl7.player.media.IjkPlayerView
+        android:id="@+id/vitamio"
+        android:layout_width="match_parent"
+        android:layout_height="350px"
+        android:visibility="gone"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true" />
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="fill_parent"
+        android:layout_height="350px"
+        android:background="@drawable/_no_img"/>
+</com.zhy.autolayout.AutoFrameLayout>
         </com.zhy.autolayout.AutoRelativeLayout>
 
         <com.zhy.autolayout.AutoLinearLayout

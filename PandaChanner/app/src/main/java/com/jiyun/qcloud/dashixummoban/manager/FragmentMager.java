@@ -139,10 +139,6 @@ public class FragmentMager {
      * @return
      */
     public BaseFragment build() {
-
-
-
-
         App.lastfragment = fragment;
         fragmentTransaction.commit();
         int count=fragmentManager.getBackStackEntryCount();

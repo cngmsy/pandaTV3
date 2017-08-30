@@ -1,13 +1,13 @@
 <component name="libraryTable">
   <library name="support-media-compat-24.2.0">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.android/build-cache/51c17ed8414162263360b058a3cbc09583ab4dee/output/jars/libs/internal_impl-24.2.0.jar!/" />
-      <root url="jar://$USER_HOME$/.android/build-cache/51c17ed8414162263360b058a3cbc09583ab4dee/output/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.android/build-cache/51c17ed8414162263360b058a3cbc09583ab4dee/output/res" />
+      <root url="jar://$USER_HOME$/.android/build-cache/93dbbcd1f4e845170d59fc8a6fd9a0d84f497c3b/output/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.android/build-cache/93dbbcd1f4e845170d59fc8a6fd9a0d84f497c3b/output/jars/libs/internal_impl-24.2.0.jar!/" />
+      <root url="file://$USER_HOME$/.android/build-cache/93dbbcd1f4e845170d59fc8a6fd9a0d84f497c3b/output/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://D:/androidStudio/AndroidStudio/android-sdk-windows/extras/android/m2repository/com/android/support/support-media-compat/24.2.0/support-media-compat-24.2.0-sources.jar!/" />
+      <root url="jar://D:/AndroidStudio/android-sdk-windows/extras/android/m2repository/com/android/support/support-media-compat/24.2.0/support-media-compat-24.2.0-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

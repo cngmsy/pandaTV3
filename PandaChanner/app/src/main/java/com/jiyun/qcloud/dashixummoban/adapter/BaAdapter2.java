@@ -94,19 +94,14 @@ public class BaAdapter2 extends RecyclerView.Adapter {
         Request request = new Request.Builder().url(url).build();
 
         client.newCall(request).enqueue(new Callback() {
-
-
             @Override
             public void onFailure(Call call, IOException e) {
-
             }
-
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String string = response.body().string();
                 Gson gson = new Gson();
                 liveChinaLiveBean = gson.fromJson(string, LiveChinaLiveBean.class);
-                Log.e("duhduhih0", liveChinaLiveBean.getPublicX());
                 FragmentActivity activity = App.lastfragment.getActivity();
                 activity.runOnUiThread(new Runnable() {
                     @Override
@@ -115,7 +110,6 @@ public class BaAdapter2 extends RecyclerView.Adapter {
                         myHolder.player.setVisibility(View.VISIBLE);
                         myHolder.player.setUp(flv2, "xxxx");
                         myHolder.player.setThumbImageViewScalType(ImageView.ScaleType.FIT_XY);
-
                     }
                 });
             }

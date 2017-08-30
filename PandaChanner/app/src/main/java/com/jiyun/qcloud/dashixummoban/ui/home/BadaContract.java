@@ -11,8 +11,6 @@ import com.jiyun.qcloud.dashixummoban.entity.BadaBean;
 public interface BadaContract{
     interface View extends IBaseView<Presenter> {
         void loadBaList(BadaBean movieBean);
-
-
     }
 
     interface Presenter extends IBasePresenter {

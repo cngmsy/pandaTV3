@@ -22,6 +22,14 @@ android {
         schemaVersion 1
         targetGenDir 'src/main/java'
     }
+    splits {
+        abi {
+            enable true
+            reset()
+            include 'x86', 'x86_64', 'armeabi-v7a', 'armeabi'
+            universalApk false
+        }
+    }
 }
 
 repositories {
@@ -33,9 +41,13 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     //上拉刷新，下拉加载的框架
+
     //轮播图
+
     //
+
     //Retrofit2
+
     //Dagger2 的依赖
     compile 'com.github.orhanobut:logger:1.12+'
     compile 'com.zhy:autolayout:1.4.3'
@@ -60,6 +72,18 @@ dependencies {
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.jcodecraeer:xrecyclerview:1.3.2'
     compile project(':vitamio')
-    compile project(':playerview')
     compile 'fm.jiecao:jiecaovideoplayer:2.0'
+    compile 'in.srain.cube:ptr-load-more:1.0.6'
+    compile files('libs/SocialSDK_QQ_Simplify.jar')
+    compile files('libs/SocialSDK_Sina_Simplify.jar')
+    compile files('libs/SocialSDK_WeChat_Simplify.jar')
+    compile files('libs/umeng_shareboard_widget.jar')
+    compile files('libs/umeng_social_api.jar')
+    compile files('libs/umeng_social_net.jar')
+    compile files('libs/umeng_social_shareboard.jar')
+    compile files('libs/umeng_social_shareview.jar')
+    compile files('libs/umeng_social_tool.jar')
+    compile 'com.teprinciple:updateapputils:1.2'
+    compile project(':player')
+
 }

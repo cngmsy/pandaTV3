@@ -16,6 +16,7 @@ import com.jiyun.qcloud.dashixummoban.entity.Live.LivePageBeans;
 import com.jiyun.qcloud.dashixummoban.ui.live.adapter.LiveViewPagerAdapter;
 import com.jiyun.qcloud.dashixummoban.ui.live.fragment.LiveFragment;
 import com.jiyun.qcloud.dashixummoban.ui.live.fragment.MomentFragment;
+import com.jiyun.qcloud.dashixummoban.ui.live.network.LivePresenter;
 import com.jiyun.qcloud.dashixummoban.ui.live.view.NoScrollViewPager;
 
 import java.util.ArrayList;
@@ -48,7 +49,6 @@ public class LivePageFragment extends BaseFragment implements LivepageContract.V
         presenter = new LivepagePresenter(this);
         presenter.start();
     }
-
     @Override
     protected void initView(View view) {
 

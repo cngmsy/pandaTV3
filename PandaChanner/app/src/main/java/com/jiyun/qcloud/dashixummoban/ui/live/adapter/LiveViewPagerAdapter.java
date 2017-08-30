@@ -19,7 +19,6 @@ public class LiveViewPagerAdapter extends FragmentPagerAdapter {
         this.list = list;
         this.fragments = fragments;
     }
-
     @Override
     public Fragment getItem(int position) {
         return fragments.get(position);

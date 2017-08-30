@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -37,7 +36,7 @@ import butterknife.Unbinder;
  * Created by Administrator on 2017/8/23 0023.
  */
 
-public class China extends BaseFragment implements ChinaContract.View{
+public class China extends BaseFragment implements ChinaContract.View {
 
 
     @BindView(R.id.my_tab)
@@ -45,15 +44,17 @@ public class China extends BaseFragment implements ChinaContract.View{
     @BindView(R.id.jia_but)
     ImageButton jiaBut;
     @BindView(R.id.my_viewpager)
-    ViewPager myViewpager;
-    private ArrayList<BaseFragment> fragmentArrayList=new ArrayList<>();
-    private ArrayList<String> uriArrayList=new ArrayList<>();
-    private ArrayList<String> tileArrayList=new ArrayList<>();
-    private ArrayList<String> uri=new ArrayList<>();
+    MyViewpager myViewpager;
+    Unbinder unbinder;
+
+    private ArrayList<BaseFragment> fragmentArrayList = new ArrayList<>();
+    private ArrayList<String> uriArrayList = new ArrayList<>();
+    private ArrayList<String> tileArrayList = new ArrayList<>();
+    private ArrayList<String> uri = new ArrayList<>();
     private ChinaContract.Presenter presenter;
     ArrayList<String> arrayList1 = new ArrayList<String>();
-    private ArrayList<ChinaBean.AlllistBean> alllistBeen=new ArrayList<>();
-    private ArrayList<ChinaBean.AlllistBean> tablistBeen=new ArrayList<>();
+    private ArrayList<ChinaBean.AlllistBean> alllistBeen = new ArrayList<>();
+    private ArrayList<ChinaBean.AlllistBean> tablistBeen = new ArrayList<>();
     private FragmentStatePagerAdapter der;
     private PopupWindow popupWindow;
     private ImageButton close;
@@ -68,7 +69,7 @@ public class China extends BaseFragment implements ChinaContract.View{
 
     @Override
     protected void initData() {
-        presenter=new ChinaPresenter(this);
+        presenter = new ChinaPresenter(this);
         presenter.start();
 
 
@@ -76,7 +77,7 @@ public class China extends BaseFragment implements ChinaContract.View{
 
     @Override
     protected void initView(View view) {
-        View view2=LayoutInflater.from(getContext()).inflate(R.layout.china_pop,null);
+        View view2 = LayoutInflater.from(getContext()).inflate(R.layout.china_pop, null);
         popupWindow = new PopupWindow(view2, ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         popupWindow.setFocusable(true);
         popupWindow.setBackgroundDrawable(new BitmapDrawable());
@@ -95,8 +96,8 @@ public class China extends BaseFragment implements ChinaContract.View{
 
     @OnClick(R.id.jia_but)
     public void onViewClicked() {
-        View v=LayoutInflater.from(getContext()).inflate(R.layout.activity_main,null);
-        popupWindow.showAsDropDown(v,0,0);
+        View v = LayoutInflater.from(getContext()).inflate(R.layout.activity_main, null);
+        popupWindow.showAsDropDown(v, 0, 0);
     }
 
     @Override
@@ -105,77 +106,77 @@ public class China extends BaseFragment implements ChinaContract.View{
             @Override
             public void onClick(View view) {
                 popupWindow.dismiss();
-                Log.e("TAG",arrayList1.size()+"");
+                Log.e("TAG", arrayList1.size() + "");
                 der.notifyDataSetChanged();
             }
         });
         bianji.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-             if("编辑".equals(bianji.getText().toString())){
-                 bianji.setText("完成");
-                 grid.setOnItemClickListener(new MyGridLayout.OnItemClickListener() {
-                     @Override
-                     public void onItemClick(TextView tv) {
-                         grid.setEnabled(true);//设置可拖拽
-                         if(arrayList1.size()>4){
-                             String s=tv.getText().toString();
-                             for(int i=0;i<arrayList1.size();i++){
+                if ("编辑".equals(bianji.getText().toString())) {
+                    bianji.setText("完成");
+                    grid.setOnItemClickListener(new MyGridLayout.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(TextView tv) {
+                            grid.setEnabled(true);//设置可拖拽
+                            if (arrayList1.size() > 4) {
+                                String s = tv.getText().toString();
+                                for (int i = 0; i < arrayList1.size(); i++) {
 
-                                 if(s.equals(arrayList1.get(i))){
-                                     arrayList1.remove(i);
-                                    // tileArrayList.add(s);
-                                     fragmentArrayList.remove(i);
-                                 }
+                                    if (s.equals(arrayList1.get(i))) {
+                                        arrayList1.remove(i);
+                                        // tileArrayList.add(s);
+                                        fragmentArrayList.remove(i);
+                                    }
 
-                             }
-                             //修改
-                             tileArrayList.add(tv.getText().toString());
-                             arrayList1.remove(tv.getText().toString());
-                             grid.removeView(tv);
-                             grid2.addItem(tv.getText().toString());
-                         }else{
-                             Toast.makeText(getActivity(), "不能少于四个栏目", Toast.LENGTH_SHORT).show();
-                         }
+                                }
+                                //修改
+                                tileArrayList.add(tv.getText().toString());
+                                arrayList1.remove(tv.getText().toString());
+                                grid.removeView(tv);
+                                grid2.addItem(tv.getText().toString());
+                            } else {
+                                Toast.makeText(getActivity(), "不能少于四个栏目", Toast.LENGTH_SHORT).show();
+                            }
 
 
-                     }
-                 });
+                        }
+                    });
 
-                 grid2.setOnItemClickListener(new MyGridLayout.OnItemClickListener() {
-                     @Override
-                     public void onItemClick(TextView tv) {
+                    grid2.setOnItemClickListener(new MyGridLayout.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(TextView tv) {
 
-                         String s = tv.getText().toString();
-                         for (int i = 0; i < tileArrayList.size(); i++) {
-                             if (s.equals(tileArrayList.get(i))) {
+                            String s = tv.getText().toString();
+                            for (int i = 0; i < tileArrayList.size(); i++) {
+                                if (s.equals(tileArrayList.get(i))) {
 //                                    alllist.remove(i).getTitle();
-                                 //arrayList1.add(s);
-                                 tileArrayList.remove(i);
-                                 fragmentArrayList.add(new Badaling(uri.get(i)));
-                             }
-                         }
-                         grid2.removeView(tv);//移除是需要时间,不能直接添加
-                         tileArrayList.remove(tv.getText().toString());
-                         arrayList1.add(tv.getText().toString());
-                         grid.addItem(tv.getText().toString());
-                     }
-                 });
+                                    //arrayList1.add(s);
+                                    tileArrayList.remove(i);
+                                    fragmentArrayList.add(new Badaling(uri.get(i)));
+                                }
+                            }
+                            grid2.removeView(tv);//移除是需要时间,不能直接添加
+                            tileArrayList.remove(tv.getText().toString());
+                            arrayList1.add(tv.getText().toString());
+                            grid.addItem(tv.getText().toString());
+                        }
+                    });
 
-             }else if("完成".equals(bianji.getText().toString())){
-                 Toast.makeText(getContext(), "dfdfd" + arrayList1.size(), Toast.LENGTH_SHORT).show();
-                 grid.setOnItemClickListener(new MyGridLayout.OnItemClickListener() {
-                     @Override
-                     public void onItemClick(TextView tv) {
-                     }
-                 });
-                 grid2.setOnItemClickListener(new MyGridLayout.OnItemClickListener() {
-                     @Override
-                     public void onItemClick(TextView tv) {
-                     }
-                 });
-                 bianji.setText("编辑");
-             }
+                } else if ("完成".equals(bianji.getText().toString())) {
+                    Toast.makeText(getContext(), "dfdfd" + arrayList1.size(), Toast.LENGTH_SHORT).show();
+                    grid.setOnItemClickListener(new MyGridLayout.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(TextView tv) {
+                        }
+                    });
+                    grid2.setOnItemClickListener(new MyGridLayout.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(TextView tv) {
+                        }
+                    });
+                    bianji.setText("编辑");
+                }
             }
 
         });
@@ -193,7 +194,7 @@ public class China extends BaseFragment implements ChinaContract.View{
 
     @Override
     public void setPresenter(ChinaContract.Presenter presenter) {
-        this.presenter=presenter;
+        this.presenter = presenter;
     }
 
     @Override
@@ -204,19 +205,19 @@ public class China extends BaseFragment implements ChinaContract.View{
             arrayList2.add(tablist.get(i).getTitle());
             fragmentArrayList.add(new Badaling(tablist.get(i).getUrl()));
         }*/
-       tablistBeen.addAll(alllist);
-        for (int i = 0; i <tablist.size() ; i++) {
+        tablistBeen.addAll(alllist);
+        for (int i = 0; i < tablist.size(); i++) {
             arrayList1.add(tablist.get(i).getTitle());
             fragmentArrayList.add(new Badaling(tablist.get(i).getUrl()));
         }
-        for (int i = 0; i <alllist.size() ; i++) {
+        for (int i = 0; i < alllist.size(); i++) {
             uriArrayList.add(tablistBeen.get(i).getUrl());
             tileArrayList.add(tablistBeen.get(i).getTitle());
             uri.add(tablistBeen.get(i).getUrl());
         }
-        for (int i = 0; i <arrayList1.size() ; i++) {
-            for (int j = 0; j <tileArrayList.size() ; j++) {
-                if (arrayList1.get(i).equals(tileArrayList.get(j))){
+        for (int i = 0; i < arrayList1.size(); i++) {
+            for (int j = 0; j < tileArrayList.size(); j++) {
+                if (arrayList1.get(i).equals(tileArrayList.get(j))) {
                     tileArrayList.remove(j);
                 }
             }
@@ -224,7 +225,7 @@ public class China extends BaseFragment implements ChinaContract.View{
         grid2.setItemList(tileArrayList);
         grid.setItemList(arrayList1);
 
-        der=new FragmentStatePagerAdapter(getChildFragmentManager()) {
+        der = new FragmentStatePagerAdapter(getChildFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
                 return fragmentArrayList.get(position);
@@ -234,19 +235,15 @@ public class China extends BaseFragment implements ChinaContract.View{
             public int getCount() {
                 return fragmentArrayList.size();
             }
+
             @Override
             public CharSequence getPageTitle(int position) {
                 return arrayList1.get(position);
             }
         };
-            myViewpager.setOnTouchListener(new View.OnTouchListener() {
-                @Override
-                public boolean onTouch(View view, MotionEvent motionEvent) {
-                    return true;
-                }
-            });
-            myViewpager.setAdapter(der);
-
+        myViewpager.setNoScroll(true);
+        myViewpager.setAdapter(der);
+        myViewpager.setOffscreenPageLimit(1);
         myTab.setTabMode(TabLayout.MODE_SCROLLABLE);
         myTab.setupWithViewPager(myViewpager);
 
@@ -260,5 +257,19 @@ public class China extends BaseFragment implements ChinaContract.View{
     @Override
     public void loadWebView() {
 
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        // TODO: inflate a fragment view
+        View rootView = super.onCreateView(inflater, container, savedInstanceState);
+        unbinder = ButterKnife.bind(this, rootView);
+        return rootView;
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
     }
 }

@@ -40,13 +40,23 @@ public class HomePageFragment extends BaseFragment implements Home2Contract.View
     @Override
     protected void initData() {
         presenter.start();
-
     }
 
     @Override
     protected void initView(View view) {
+        homeList.setLoadingMoreEnabled(false);
+        homeList.setLoadingListener(new XRecyclerView.LoadingListener() {
+            @Override
+            public void onRefresh() {
+                presenter.start();
+                homeList.refreshComplete();
+            }
 
+            @Override
+            public void onLoadMore() {
 
+            }
+        });
     }
 
     @Override

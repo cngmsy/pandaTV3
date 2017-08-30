@@ -1,5 +1,9 @@
 package com.jiyun.qcloud.dashixummoban.ui.China.dizhi;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
@@ -15,6 +19,7 @@ import com.jiyun.qcloud.dashixummoban.base.BaseFragment;
 import com.jiyun.qcloud.dashixummoban.entity.BadaBean;
 import com.jiyun.qcloud.dashixummoban.ui.home.BadaContract;
 import com.jiyun.qcloud.dashixummoban.ui.home.BadaPresenter;
+import com.jiyun.qcloud.dashixummoban.ui.live.network.LivePresenter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,9 +44,9 @@ public class Badaling extends BaseFragment implements BadaContract.View {
     private BaAdapter2 adapter;
     private BadaContract.Presenter presenter;
     private String url;
+    private List<BadaBean.LiveBean> live;
 
     public Badaling(String url) {
-
         this.url = url;
     }
 
@@ -52,10 +57,29 @@ public class Badaling extends BaseFragment implements BadaContract.View {
 
     @Override
     protected void initData() {
-        presenter = new BadaPresenter(this);
-        presenter.start();
+        IntentFilter filter=new IntentFilter();
+        filter.addAction("axcv");
+        getActivity().registerReceiver(new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                show();
+            }
+        },filter);
+    }
 
+    private void show() {
+        JCVideoPlayer.releaseAllVideos();
+    }
 
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser){
+            presenter = new BadaPresenter(this);
+            presenter.start();
+        }else {
+            JCVideoPlayer.releaseAllVideos();
+        }
     }
 
     @Override
@@ -63,11 +87,8 @@ public class Badaling extends BaseFragment implements BadaContract.View {
         mylv.setLoadingListener(new XRecyclerView.LoadingListener() {
             @Override
             public void onRefresh() {
-
                 mylv.refreshComplete();
-
             }
-
             @Override
             public void onLoadMore() {
                 mylv.loadMoreComplete();
@@ -104,8 +125,7 @@ public class Badaling extends BaseFragment implements BadaContract.View {
 
     @Override
     public void loadBaList(BadaBean movieBean) {
-        Log.e("TAG", movieBean.getLive().size() + "");
-        List<BadaBean.LiveBean> live = movieBean.getLive();
+        live = movieBean.getLive();
         String title = live.get(0).getTitle();
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         mylv.setLayoutManager(linearLayoutManager);

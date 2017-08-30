@@ -37,5 +37,9 @@ public class Urls {
     public static final String PANDALIVEPAGE = "http://www.ipanda.com/kehuduan/PAGE14501772263221982/index.json";
     //互动
     public static final String INTERACTION="http://www.ipanda.com/kehuduan/PAGE14501767715521482/index.json";
-
+    //    熊猫播报 http://www.ipanda.com/kehuduan/news/index.json
+    public static final String BROADCAST = "http://www.ipanda.com/kehuduan/news/index.json";
+    public static final String getShiping = MP4+"8ff497729f7e4d9881d643f41f90d378";
+    //    精彩一刻
+    public static final String SPLENDURL = "http://api.cntv.cn/video/videolistById?vsid=VSET100167216881&n=7&serviceId=panda&o=desc&of=time&p=1";
 }

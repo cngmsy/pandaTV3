@@ -18,23 +18,23 @@ import com.jiyun.qcloud.dashixummoban.base.BaseFragment;
 import com.jiyun.qcloud.dashixummoban.manager.ActivityCollector;
 import com.jiyun.qcloud.dashixummoban.manager.FragmentMager;
 import com.jiyun.qcloud.dashixummoban.ui.Broadcast.Broadcast;
+import com.jiyun.qcloud.dashixummoban.ui.Broadcast.iview.BroadPresenter;
 import com.jiyun.qcloud.dashixummoban.ui.China.China;
-import com.jiyun.qcloud.dashixummoban.ui.Gun.Gun;
-import com.jiyun.qcloud.dashixummoban.ui.Gun.ivewgun.GunPresenter;
+import com.jiyun.qcloud.dashixummoban.ui.Gun.activity.Gun;
+import com.jiyun.qcloud.dashixummoban.ui.Gun.activity.ivewgun.GunPresenter;
 import com.jiyun.qcloud.dashixummoban.ui.home.Home2Ptresenter;
 import com.jiyun.qcloud.dashixummoban.ui.home.HomePageFragment;
 import com.jiyun.qcloud.dashixummoban.ui.live.LivePageFragment;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import util.UpdateAppUtils;
 
 /**
  * Created by chj on 2017/8/20.
  */
 
 public class MainActivity extends BaseActivity {
-
-
     @BindView(R.id.iconImg)
     ImageView iconImg;
     @BindView(R.id.personImg)
@@ -59,9 +59,22 @@ public class MainActivity extends BaseActivity {
     RadioGroup homeBottomGroup;
     private FragmentManager fragmentManager;
     private long mExitTime;
+    private Intent intent;
 
     @Override
     protected void initData() {
+        UpdateAppUtils.from(this)//Activity名
+                .serverVersionCode(2)  //服务器versionCode
+                .serverVersionName("2.0") //服务器versionName
+                .apkPath("http://123.206.14.104:8080/FileUploadDemo/files/wxl.apk") //最新apk下载地址
+                .update();
+        personImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MainActivity.this,DengActivity.class);
+                startActivity(intent);
+            }
+        });
         fragmentManager = App.mBaseActivity.getSupportFragmentManager();
         HomePageFragment homeFragment= (HomePageFragment) FragmentMager.getInstance().start(R.id.container, HomePageFragment.class,false).build();
         //presenter在这里初始化
@@ -70,6 +83,8 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        intent = new Intent();
+        intent.setAction("axcv");
 
     }
 
@@ -87,6 +102,7 @@ public class MainActivity extends BaseActivity {
                 iconImg.setVisibility(View.VISIBLE);
                 titleTv.setVisibility(View.GONE);
                 FragmentMager.getInstance().start(R.id.container, HomePageFragment.class,false).build();
+                sendBroadcast(intent);
                 break;
             case R.id.homePandaLive:
                 hudongImg.setVisibility(View.GONE);
@@ -94,6 +110,7 @@ public class MainActivity extends BaseActivity {
                 titleTv.setVisibility(View.VISIBLE);
                 titleTv.setText("熊猫直播");
                 FragmentMager.getInstance().start(R.id.container, LivePageFragment.class,false).build();
+                sendBroadcast(intent);
                 break;
             case R.id.homeRollVideo:
                 hudongImg.setVisibility(View.GONE);
@@ -102,13 +119,16 @@ public class MainActivity extends BaseActivity {
                 titleTv.setText("滚滚视频");
                 Gun gun = (Gun) FragmentMager.getInstance().start(R.id.container, Gun.class, false).build();
                 new GunPresenter(gun);
+                sendBroadcast(intent);
                 break;
             case R.id.homePandaBroadcast:
                 hudongImg.setVisibility(View.GONE);
                 iconImg.setVisibility(View.GONE);
                 titleTv.setVisibility(View.VISIBLE);
                 titleTv.setText("熊猫播报");
-                FragmentMager.getInstance().start(R.id.container, Broadcast.class,false).build();
+                Broadcast broadcast = (Broadcast) FragmentMager.getInstance().start(R.id.container, Broadcast.class, false).build();
+                new BroadPresenter(broadcast);
+                sendBroadcast(intent);
                 break;
             case R.id.homeLiveChina:
                 hudongImg.setVisibility(View.GONE);
@@ -116,6 +136,7 @@ public class MainActivity extends BaseActivity {
                 titleTv.setVisibility(View.VISIBLE);
                 titleTv.setText("直播中国");
                 FragmentMager.getInstance().start(R.id.container, China.class,false).build();
+                sendBroadcast(intent);
                 break;
             case R.id.homeBottomGroup:
                 break;
@@ -181,6 +202,9 @@ public class MainActivity extends BaseActivity {
     public void onViewClicked() {
         Intent intent = new Intent(MainActivity.this, InteractionActivity.class);
         startActivity(intent);
+    }
+    public interface Int {
+        void show(String s);
     }
 }
 

@@ -33,8 +33,6 @@ public abstract class BaseFragment extends Fragment {
         if (parent != null) {
             parent.removeView(view);
         }
-
-
         unbinder =ButterKnife.bind(this,view);
         initView(view);
 
@@ -71,12 +69,4 @@ public abstract class BaseFragment extends Fragment {
      * @param bundle
      */
     public abstract void setBundle(Bundle bundle);
-
-
-    /*@Override
-    public void onResume() {
-        super.onResume();
-        initData();
-    }*/
-
 }

@@ -86,7 +86,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.Holder> {
             //设置Banner标题集合（当banner样式有显示title时）
             holder.banner.setBannerTitles(datas);
             //设置轮播时间
-            holder.banner.setDelayTime(2000);
+            holder.banner.setDelayTime(4000);
             //设置指示器位置（当banner模式中有指示器时）
             holder.banner.setIndicatorGravity(BannerConfig.CIRCLE_INDICATOR_TITLE_INSIDE);
             //Banner设置方法全部调用完毕时最后调用
